@@ -176,6 +176,23 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Ex
 vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
 
+-- Move Line
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+
+-- Greatest remap ever
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = '[P]aste without copy' })
+
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Move and center
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- Next occurrence and center
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
