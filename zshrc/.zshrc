@@ -1,5 +1,6 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/alexsandro/.zsh/completions:"* ]]; then export FPATH="/home/alexsandro/.zsh/completions:$FPATH"; fi
+
 # Profile
 source $HOME/.profile
 
@@ -59,9 +60,26 @@ eval "$(starship init zsh)"
 alias g=git
 alias cat=bat
 alias k=kubectl
-alias nvim='nvim .'
 alias heap='export NODE_OPTIONS=--max_old_space_size=8192'
-alias quanta='source quanta-npm-login quanta && aws-vault exec quanta -d 8h'
+
+function quanta {
+    session_name="quanta"
+
+    if tmux has-session -t $session_name 2>/dev/null; then
+        if [ -n "$TMUX" ]; then
+          tmux switch-client -t "$session_name"
+        else
+          tmux attach -t "$session_name"
+        fi
+    else
+        source quanta-npm-login quanta
+        if [ -n "$TMUX" ]; then
+          aws-vault exec quanta -d 8h -- tmux new-session -d -s "$session_name" && tmux switch-client -t "$session_name"
+        else
+          aws-vault exec quanta -d 8h -- tmux new-session -s "$session_name"
+        fi
+    fi
+}
 
 # My functions
 function git-cleanup() {
@@ -77,3 +95,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/alexsandro/.lmstudio/bin"
+# End of LM Studio CLI section
+
