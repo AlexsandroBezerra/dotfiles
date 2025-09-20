@@ -172,6 +172,7 @@ require('lazy').setup({
         },
       },
       spec = {
+        { '<leader>n', group = 'A[n]gular' },
         { '<leader>e', group = 'File [E]xplorer' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
