@@ -1,5 +1,22 @@
 return {
   'tpope/vim-fugitive',
+  opt = true,
+  cmd = {
+    'G',
+    'Git',
+    'Gdiffsplit',
+    'Gvdiffsplit',
+    'Gedit',
+    'Gsplit',
+    'Gread',
+    'Gwrite',
+    'Ggrep',
+    'Glgrep',
+    'Gmove',
+    'Gdelete',
+    'Gremove',
+    'Gbrowse',
+  },
   keys = {
     { '<leader>gs', '<cmd>G<cr>', desc = 'Git status' },
     { '<leader>gc', '<cmd>G commit<cr>', desc = 'Git commit' },

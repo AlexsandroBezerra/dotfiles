@@ -175,7 +175,8 @@ require('lazy').setup({
         { '<leader>n', group = 'A[n]gular' },
         { '<leader>e', group = 'File [E]xplorer' },
         { '<leader>s', group = '[S]earch' },
-        { '<leader>t', group = '[T]oggle' },
+        { '<leader>t', group = '[T]ests' },
+        { '<leader>T', group = '[T]oggle' },
         { '<leader>g', group = 'Git' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
@@ -367,7 +368,7 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map('<leader>th', function()
+            map('<leader>Th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
@@ -537,6 +538,7 @@ require('lazy').setup({
         },
         opts = {},
       },
+      'Exafunction/codeium.nvim',
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -563,9 +565,10 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
         },
       },
 
