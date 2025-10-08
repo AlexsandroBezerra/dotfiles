@@ -20,6 +20,7 @@ return {
   keys = {
     { '<leader>gs', '<cmd>G<cr>', desc = 'Git status' },
     { '<leader>gc', '<cmd>G commit<cr>', desc = 'Git commit' },
+    { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git blame' },
     { '<leader>gp', '<cmd>G pull<cr>', desc = 'Git pull' },
     { '<leader>gP', '<cmd>G push<cr>', desc = 'Git push' },
   },
