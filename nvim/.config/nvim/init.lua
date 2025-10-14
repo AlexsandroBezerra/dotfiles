@@ -538,7 +538,6 @@ require('lazy').setup({
         },
         opts = {},
       },
-      'Exafunction/codeium.nvim',
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -565,10 +564,9 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
         },
       },
 
